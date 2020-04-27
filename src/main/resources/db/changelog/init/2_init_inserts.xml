@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="db/changelog/init/1_init_createTables.xml"/>
-    <include file="db/changelog/init/2_init_inserts.xml"/>
-    <includeAll path="db/changelog/sets/"/>
+        <changeSet author="Olya" id="initialization_inserts">
+            <sqlFile path="db/changelog/init/inserts.sql"/>
+        </changeSet>
 
 </databaseChangeLog>
