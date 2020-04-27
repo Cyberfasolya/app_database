@@ -1121,40 +1121,7 @@ ALTER TABLE ONLY public.vet
 -- PostgreSQL database dump complete
 --
 
-CREATE TABLE administration_worker(
-        id serial PRIMARY KEY,
-        employee_id int REFERENCES employee(id)
-ON DELETE CASCADE ON UPDATE CASCADE,
-cabinet_number int NOT NULL CHECK(cabinet_number > 0)
-);
 
-CREATE TABLE trainer (
-        id serial PRIMARY KEY,
-        access_worker_id int REFERENCES access_worker(id)
-ON DELETE CASCADE ON UPDATE CASCADE,
-        hall_number int NOT NULL CHECK(hall_number > 0)
-);
-
-CREATE TABLE menu(
-        id serial PRIMARY KEY,
-        animal_id int REFERENCES animal (id)
-ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-
-CREATE TABLE menu_content(
-        menu_id int NOT NULL,
-        feed_id int NOT NULL,
-        PRIMARY KEY (menu_id ,feed_id),
-        CONSTRAINT  menu_content_menu_id_fkey FOREIGN KEY (menu_id)
-                REFERENCES menu (id) MATCH SIMPLE
-                ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT menu_content_feed_id_fkey FOREIGN KEY (feed_id)
-                REFERENCES feed (id) MATCH SIMPLE
-                ON DELETE RESTRICT ON UPDATE CASCADE,
-        feed_amount int NOT NULL CHECK(feed_amount > 0),
-        season text NOT NULL
-);
 
 
 

@@ -9,8 +9,8 @@
         <sqlFile path="db/changelog/init/create.sql"/>
     </changeSet>
 
-    <changeSet author="Olya" id="initialization">
-        <sqlFile path="db/changelog/init/inserts.sql"/>
-    </changeSet>
+<!--    <changeSet author="Olya" id="initialization">-->
+<!--        <sqlFile path="db/changelog/init/inserts.sql"/>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>
