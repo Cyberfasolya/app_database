@@ -1,0 +1,10 @@
+INSERT INTO public.feed (id, name, type) VALUES (1, 'фрукты', 'растительный');
+INSERT INTO public.feed (id, name, type) VALUES (2, 'овощи', 'растительный');
+INSERT INTO public.feed (id, name, type) VALUES (3, 'зерно', 'растительный');
+INSERT INTO public.feed (id, name, type) VALUES (4, 'сено', 'растительный');
+INSERT INTO public.feed (id, name, type) VALUES (5, 'мыши', 'живой');
+INSERT INTO public.feed (id, name, type) VALUES (6, 'птицы', 'живой');
+INSERT INTO public.feed (id, name, type) VALUES (7, 'говядина', 'мясо');
+INSERT INTO public.feed (id, name, type) VALUES (8, 'свинина', 'мясо');
+INSERT INTO public.feed (id, name, type) VALUES (9, 'смесь', 'комбикорм');
+INSERT INTO public.feed (id, name, type) VALUES (10, 'смеси', 'комбикорм');

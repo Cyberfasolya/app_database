@@ -1,0 +1,10 @@
+INSERT INTO public.zoo (id, name) VALUES (1, 'Лимпопо');
+INSERT INTO public.zoo (id, name) VALUES (2, 'Швейцария');
+INSERT INTO public.zoo (id, name) VALUES (3, 'Нептун');
+INSERT INTO public.zoo (id, name) VALUES (4, 'Додо');
+INSERT INTO public.zoo (id, name) VALUES (5, 'Воробьи');
+INSERT INTO public.zoo (id, name) VALUES (6, 'Сафари');
+INSERT INTO public.zoo (id, name) VALUES (7, 'Тайган');
+INSERT INTO public.zoo (id, name) VALUES (8, 'Планета');
+INSERT INTO public.zoo (id, name) VALUES (9, 'Ручей');
+INSERT INTO public.zoo (id, name) VALUES (10, 'Приамурский');

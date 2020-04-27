@@ -1,0 +1,11 @@
+INSERT INTO public.provider (id, name) VALUES (1, 'ZooMarket');
+INSERT INTO public.provider (id, name) VALUES (2, 'Зоолавка');
+INSERT INTO public.provider (id, name) VALUES (3, 'Зоомир');
+INSERT INTO public.provider (id, name) VALUES (4, 'Зоомагазин');
+INSERT INTO public.provider (id, name) VALUES (5, 'Зоомаркет');
+INSERT INTO public.provider (id, name) VALUES (6, 'Зоосалон');
+INSERT INTO public.provider (id, name) VALUES (7, 'Зоосервис');
+INSERT INTO public.provider (id, name) VALUES (8, 'Зоосказка');
+INSERT INTO public.provider (id, name) VALUES (9, 'Зооуголок');
+INSERT INTO public.provider (id, name) VALUES (10, 'Зооквартал');
+INSERT INTO public.provider (id, name) VALUES (11, 'Зоопарк');

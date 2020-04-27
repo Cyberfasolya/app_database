@@ -1,0 +1,10 @@
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (1, 'лошадь', 'травоядное', false, 3);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (2, 'тигр', 'хищник', false, 2);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (3, 'лев', 'хищник', true, 3);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (4, 'олень', 'травоядное', false, 3);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (5, 'сова', 'хищник', false, 1);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (6, 'жираф', 'травоядное', true, 4);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (7, 'носорог', 'травоядное', false, 2);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (8, 'слон', 'травоядное', false, 3);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (9, 'гиена', 'хищник', false, 3);
+INSERT INTO public.species (id, name, type, need_warm_place, age_for_childbirth) VALUES (10, 'медведь', 'хищник', false, 2);
