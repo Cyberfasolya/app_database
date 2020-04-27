@@ -535,42 +535,6 @@ ALTER SEQUENCE public.supply_id_seq OWNED BY public.supply.id;
 
 
 --
--- Name: test; Type: TABLE; Schema: public; Owner: Olya
---
-
-CREATE TABLE public.test (
-    id integer NOT NULL,
-    surname text NOT NULL,
-    monthly_salary integer NOT NULL,
-    CONSTRAINT test_monthly_salary_check CHECK ((monthly_salary > 0))
-);
-
-
-ALTER TABLE public.test OWNER TO "Olya";
-
---
--- Name: test_id_seq; Type: SEQUENCE; Schema: public; Owner: Olya
---
-
-CREATE SEQUENCE public.test_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.test_id_seq OWNER TO "Olya";
-
---
--- Name: test_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Olya
---
-
-ALTER SEQUENCE public.test_id_seq OWNED BY public.test.id;
-
-
---
 -- Name: vet; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -723,12 +687,6 @@ ALTER TABLE ONLY public.species ALTER COLUMN id SET DEFAULT nextval('public.spec
 
 ALTER TABLE ONLY public.supply ALTER COLUMN id SET DEFAULT nextval('public.supply_id_seq'::regclass);
 
-
---
--- Name: test id; Type: DEFAULT; Schema: public; Owner: Olya
---
-
-ALTER TABLE ONLY public.test ALTER COLUMN id SET DEFAULT nextval('public.test_id_seq'::regclass);
 
 
 --
@@ -907,15 +865,6 @@ ALTER TABLE ONLY public.species
 
 ALTER TABLE ONLY public.supply
     ADD CONSTRAINT supply_pkey PRIMARY KEY (id);
-
-
---
--- Name: test test_pkey; Type: CONSTRAINT; Schema: public; Owner: Olya
---
-
-ALTER TABLE ONLY public.test
-    ADD CONSTRAINT test_pkey PRIMARY KEY (id);
-
 
 --
 -- Name: vet vet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
