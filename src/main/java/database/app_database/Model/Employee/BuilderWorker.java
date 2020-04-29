@@ -7,7 +7,7 @@ public class BuilderWorker {
     @Id
     private int id;
 
-    @OneToOne(mappedBy = "builder_worker", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 

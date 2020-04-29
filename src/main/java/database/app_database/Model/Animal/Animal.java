@@ -1,5 +1,6 @@
 package database.app_database.Model.Animal;
 
+import database.app_database.Model.BaseObject;
 import database.app_database.Model.Employee.AccessWorker.Access;
 import database.app_database.Model.Exchange.Exchange;
 import database.app_database.Model.MedicalExamination.MedicalExamination;
@@ -11,9 +12,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "animal")
-public class Animal {
+public class Animal extends BaseObject {
     @Id
-    private int id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cage_id")
@@ -49,6 +50,11 @@ public class Animal {
 
     @Column(name = "number_of_offspring")
     private int number_of_offspring;
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
 }
 
 

@@ -19,7 +19,7 @@ public class MedicalExamination {
     @Column(name = "height")
     private int height;
 
-    @OneToMany(mappedBy = "medical_examination", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Illness> illnesses = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
