@@ -4,6 +4,8 @@ import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Employee.AccessWorker.Vet;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "medical_examination")
@@ -16,6 +18,9 @@ public class MedicalExamination {
 
     @Column(name = "height")
     private int height;
+
+    @OneToMany(mappedBy = "medical_examination", fetch = FetchType.LAZY)
+    private List<Illness> illnesses = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_id")

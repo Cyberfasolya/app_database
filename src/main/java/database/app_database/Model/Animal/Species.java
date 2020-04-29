@@ -1,11 +1,17 @@
 package database.app_database.Model.Animal;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "species")
 public class Species {
     @Id
     private int id;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "compatibility", joinColumns = @JoinColumn(name = "first_species_id"), inverseJoinColumns = @JoinColumn(name = "second_species_id"))
+    private List<Species> speciesList = new ArrayList<>();
 
     @Column(name = "type", nullable = false)
     private String type;

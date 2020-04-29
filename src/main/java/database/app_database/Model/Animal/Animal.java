@@ -1,7 +1,13 @@
 package database.app_database.Model.Animal;
 
+import database.app_database.Model.Employee.AccessWorker.Access;
+import database.app_database.Model.Exchange.Exchange;
+import database.app_database.Model.MedicalExamination.MedicalExamination;
+
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "animal")
@@ -16,6 +22,15 @@ public class Animal {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "species_id")
     private Species species;
+
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<MedicalExamination> medicalExaminations= new ArrayList<>();
+
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Exchange> exchangeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Access> accessList = new ArrayList<>();
 
     @Column(name = " date_of_birth", nullable = false)
     private Instant date_of_birth;
