@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Olya" id="addTables">
+       <sql>
+           CREATE TABLE administration_worker(
+            id serial PRIMARY KEY,
+            employee_id int REFERENCES employee(id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
+           cabinet_number int NOT NULL CHECK(cabinet_number > 0)
+           );
+
+           CREATE TABLE trainer (
+            id serial PRIMARY KEY,
+            access_worker_id int REFERENCES access_worker(id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
+            hall_number int NOT NULL CHECK(hall_number > 0)
+           );
+       </sql>
+    </changeSet>
+
+</databaseChangeLog>
+

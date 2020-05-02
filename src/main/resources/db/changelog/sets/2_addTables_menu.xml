@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Olya" id="addTable">
+        <sql>
+            CREATE TABLE menu(
+                id serial PRIMARY KEY,
+                animal_id int REFERENCES animal (id)
+                ON DELETE CASCADE ON UPDATE CASCADE,
+                season text NOT NULL
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet author="Olya" id="addTableMenuContent">
+        <sql>
+
+            CREATE TABLE menu_content(
+                menu_id int NOT NULL,
+                feed_id int NOT NULL,
+                PRIMARY KEY (menu_id ,feed_id),
+                CONSTRAINT  menu_content_menu_id_fkey FOREIGN KEY (menu_id)
+                REFERENCES menu (id) MATCH SIMPLE
+                ON DELETE CASCADE ON UPDATE CASCADE,
+                CONSTRAINT menu_content_feed_id_fkey FOREIGN KEY (feed_id)
+                REFERENCES feed (id) MATCH SIMPLE
+                ON DELETE RESTRICT ON UPDATE CASCADE,
+                feed_amount int NOT NULL CHECK(feed_amount > 0)
+            );
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
