@@ -9,7 +9,7 @@
         <sql>
             CREATE TABLE menu(
                 id serial PRIMARY KEY,
-                animal_id int REFERENCES animal (id)
+                species_id int REFERENCES species (id)
                 ON DELETE CASCADE ON UPDATE CASCADE,
                 season text NOT NULL
             );

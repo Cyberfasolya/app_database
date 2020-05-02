@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Olya" id="insertsTrainerAdmin">
+        <sql>
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (41, 28);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (42, 21);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (43, 25);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (44, 18);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (45, 26);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (46, 27);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (47, 18);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (48, 16);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (49, 26);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (50, 22);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (51, 27);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (52, 20);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (53, 23);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (54, 25);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (55, 29);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (56, 22);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (57, 22);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (58, 22);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (59, 20);
+            INSERT INTO trainer (access_worker_id ,hall_number) VALUES (60, 24);
+
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (81, 7);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (82, 19);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (83, 22);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (84, 29);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (85, 9);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (86, 5);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (87, 4);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (88, 27);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (89, 4);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (90, 2);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (91, 17);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (92, 10);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (93, 26);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (94, 20);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (95, 6);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (96, 13);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (97, 16);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (98, 14);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (99, 19);
+            INSERT INTO administration_worker (employee_id ,cabinet_number) VALUES (100, 13);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
