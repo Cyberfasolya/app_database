@@ -35,8 +35,8 @@ public class EmployeeDto {
         this.surname = surname;
     }
 
-    public void setWorkStartDate(Instant work_start_date) {
-        this.workStartDate = work_start_date;
+    public void setWorkStartDate(Instant workStartDate) {
+        this.workStartDate = workStartDate;
     }
 
     public void setMonthlySalary(int monthlySalary) {
