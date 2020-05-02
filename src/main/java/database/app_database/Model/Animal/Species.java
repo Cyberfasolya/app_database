@@ -1,4 +1,6 @@
 package database.app_database.Model.Animal;
+import database.app_database.Model.Feed.Menu.Menu;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,9 @@ public class Species {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "compatibility", joinColumns = @JoinColumn(name = "first_species_id"), inverseJoinColumns = @JoinColumn(name = "second_species_id"))
     private List<Species> speciesList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "species", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Menu> menuList = new ArrayList<>();
 
     @Column(name = "type", nullable = false)
     private String type;
