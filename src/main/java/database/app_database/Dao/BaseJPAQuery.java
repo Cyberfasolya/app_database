@@ -1,5 +1,6 @@
 package database.app_database.Dao;
 
+
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQuery;
 
