@@ -17,10 +17,10 @@ public class Supply {
     private Feed feed;
 
     @Column(name = "supply_date", nullable =  false)
-    private Instant supply_date;
+    private Instant supplyDate;
 
     @Column(name = "feed_amount", nullable = false)
-    private int feed_amount;
+    private int feedAmount;
 
     @Column(name = "price", nullable = false)
     private int price;

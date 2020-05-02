@@ -12,7 +12,7 @@ public class BuilderWorker {
     private Employee employee;
 
     @Column(name = "building_for_repair")
-    private int building_for_repair;
+    private int buildingForRepair;
 }
 
 

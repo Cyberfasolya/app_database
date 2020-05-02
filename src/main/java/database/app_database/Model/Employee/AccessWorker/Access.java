@@ -21,5 +21,5 @@ public class Access implements Serializable {
     private Animal animal;
 
     @Column(name = "access_start_date")
-    private Instant access_start_date;
+    private Instant accessStartDate;
 }

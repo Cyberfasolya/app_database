@@ -18,6 +18,6 @@ public class MenuContent implements Serializable {
     private Feed feed;
 
     @Column(name = "feed_amount", nullable = false)
-    private int feed_amount;
+    private int feedAmount;
 
 }

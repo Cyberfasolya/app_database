@@ -12,5 +12,5 @@ public class Administrator {
     private Employee employee;
 
     @Column(name = "cabinet_number")
-    private int cabinet_number;
+    private int cabinetNumber;
 }
