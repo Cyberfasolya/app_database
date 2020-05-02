@@ -26,7 +26,12 @@ public class EmployeeService {
     @Transactional
     public List<EmployeeDto> getAll() {
         var rolesMap = new HashMap<Roles, List<Employee>>();
-       // rolesMap.put(Roles.vet, employeeDao.getAllVet());
+        rolesMap.put(Roles.vet, employeeDao.getAllVet());
+        rolesMap.put(Roles.cleaner, employeeDao.getAllCleaner());
+        rolesMap.put(Roles.trainer, employeeDao.getAllTrainer());
+        rolesMap.put(Roles.administrator, employeeDao.getAllAdministrator());
+        rolesMap.put(Roles.builderWorker, employeeDao.getAllBuilderWorker());
+
         return converter.convertAllEmployees(rolesMap);
     }
 }
