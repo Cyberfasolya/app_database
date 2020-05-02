@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Olya" id="addColumn_animalName">
+        <sql>
+            ALTER TABLE animal ADD COLUMN name text;
+
+            update  animal set name = 'Тайсон' where id = 1;
+            update  animal set name = 'Джек' where id = 2;
+            update  animal set name = 'Боня' where id = 3;
+            update  animal set name = 'Рекс' where id = 4;
+            update  animal set name = 'Джеси' where id = 5;
+            update  animal set name = 'Хатико' where id = 6;
+            update  animal set name = 'Дик' where id = 7;
+            update  animal set name = 'Лорд' where id = 8;
+            update  animal set name = 'Альма' where id = 9;
+            update  animal set name = 'Рич' where id = 10;
+            update  animal set name = 'Барон' where id = 11;
+            update  animal set name = 'Вольт' where id = 12;
+            update  animal set name = 'Каспер' where id = 13;
+            update  animal set name = 'Грай' where id = 14;
+            update  animal set name = 'Лаки' where id = 15;
+            update  animal set name = 'Рей' where id = 16;
+            update  animal set name = 'Буч' where id = 17;
+            update  animal set name = 'Чарли' where id = 18;
+            update  animal set name = 'Макс' where id = 19;
+            update  animal set name = 'Багира' where id = 20;
+            update  animal set name = 'Альфа' where id = 21;
+            update  animal set name = 'Бим' where id = 22;
+            update  animal set name = 'Татошка' where id = 23;
+            update  animal set name = 'Тишка' where id = 24;
+            update  animal set name = 'Омега' where id = 25;
+            update  animal set name = 'Джесси' where id = 26;
+            update  animal set name = 'Алекс' where id = 27;
+            update  animal set name = 'Герда' where id = 28;
+            update  animal set name = 'Гром' where id = 29;
+            update  animal set name = 'Молния' where id = 30;
+            update  animal set name = 'Тайсон' where id = 31;
+            update  animal set name = 'Джек' where id = 32;
+            update  animal set name = 'Боня' where id = 33;
+            update  animal set name = 'Рекс' where id = 34;
+            update  animal set name = 'Джеси' where id = 35;
+            update  animal set name = 'Хатико' where id = 36;
+            update  animal set name = 'Дик' where id = 37;
+            update  animal set name = 'Лорд' where id = 38;
+            update  animal set name = 'Альма' where id = 39;
+            update  animal set name = 'Рич' where id = 40;
+            update  animal set name = 'Барон' where id = 41;
+            update  animal set name = 'Вольт' where id = 42;
+            update  animal set name = 'Каспер' where id = 43;
+            update  animal set name = 'Грай' where id = 44;
+            update  animal set name = 'Лаки' where id = 45;
+            update  animal set name = 'Рей' where id = 46;
+            update  animal set name = 'Буч' where id = 47;
+            update  animal set name = 'Чарли' where id = 48;
+            update  animal set name = 'Макс' where id = 49;
+            update  animal set name = 'Багира' where id = 50;
+            update  animal set name = 'Альфа' where id = 51;
+            update  animal set name = 'Бим' where id = 52;
+            update  animal set name = 'Татошка' where id = 53;
+            update  animal set name = 'Тишка' where id = 54;
+            update  animal set name = 'Омега' where id = 55;
+            update  animal set name = 'Джесси' where id = 56;
+            update  animal set name = 'Алекс' where id = 57;
+            update  animal set name = 'Герда' where id = 58;
+            update  animal set name = 'Гром' where id = 59;
+            update  animal set name = 'Молния' where id = 60;
+            update  animal set name = 'Вавилон' where id = 61;
+            update  animal set name = 'Адель' where id = 62;
+            update  animal set name = 'Агат' where id = 63;
+            update  animal set name = 'Спирит' where id = 64;
+            update  animal set name = 'Аврора' where id = 65;
+            update  animal set name = 'Рубин' where id = 66;
+            update  animal set name = 'Буцефал' where id = 67;
+            update  animal set name = 'Афина' where id = 68;
+            update  animal set name = 'Мустанг' where id = 69;
+            update  animal set name = 'Вихрь' where id = 70;
+            update  animal set name = 'Венера' where id = 71;
+            update  animal set name = 'Люцифер' where id = 72;
+            update  animal set name = 'Калифорния' where id = 73;
+            update  animal set name = 'Скарлет' where id = 74;
+            update  animal set name = 'Фэйлин' where id = 75;
+            update  animal set name = 'Легенда' where id = 76;
+            update  animal set name = 'Лагуна' where id = 77;
+            update  animal set name = 'Валет' where id = 78;
+            update  animal set name = 'Пандора' where id = 79;
+            update  animal set name = 'Азарт' where id = 80;
+            update  animal set name = 'Ангел' where id = 81;
+            update  animal set name = 'Вольт' where id = 82;
+            update  animal set name = 'Каспер' where id = 83;
+            update  animal set name = 'Грай' where id = 84;
+            update  animal set name = 'Лаки' where id = 85;
+            update  animal set name = 'Рей' where id = 86;
+            update  animal set name = 'Буч' where id = 87;
+            update  animal set name = 'Чарли' where id = 88;
+            update  animal set name = 'Макс' where id = 89;
+            update  animal set name = 'Багира' where id = 90;
+            update  animal set name = 'Альфа' where id = 91;
+            update  animal set name = 'Бим' where id = 92;
+            update  animal set name = 'Ветер' where id = 93;
+            update  animal set name = 'Тишка' where id = 94;
+            update  animal set name = 'Омега' where id = 95;
+            update  animal set name = 'Джесси' where id = 96;
+            update  animal set name = 'Алекс' where id = 97;
+            update  animal set name = 'Герда' where id = 98;
+            update  animal set name = 'Гром' where id = 99;
+            update  animal set name = 'Молния' where id = 100;
+
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

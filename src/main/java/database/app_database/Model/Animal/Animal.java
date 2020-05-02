@@ -39,6 +39,9 @@ public class Animal extends BaseObject {
     @Column(name = "gender", nullable = false)
     private String gender;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "physical_state", nullable =  false)
     private boolean physical_state;
 
