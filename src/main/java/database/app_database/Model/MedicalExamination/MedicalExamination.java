@@ -19,7 +19,8 @@ public class MedicalExamination {
     @Column(name = "height")
     private int height;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "illness_on_medical_examination", joinColumns = @JoinColumn(name = "medical_examination_id"), inverseJoinColumns = @JoinColumn(name = "illness_id"))
     private List<Illness> illnesses = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
