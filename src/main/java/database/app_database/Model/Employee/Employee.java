@@ -15,10 +15,61 @@ public class Employee {
     private String surname;
 
     @Column(name = "work_start_date", nullable = false)
-    private Instant work_start_date;
+    private Instant workStartDate;
 
     @Column(name = "monthly_salary", nullable = false)
-    private int monthly_salary;
+    private int monthlySalary;
+
+    @Column(name = "gender", nullable = false)
+    private String gender;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public Instant getWorkStartDate() {
+        return workStartDate;
+    }
+
+    public void setWorkStartDate(Instant work_start_date) {
+        this.workStartDate = work_start_date;
+    }
+
+    public int getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public void setMonthlySalary(int monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
 
 
