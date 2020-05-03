@@ -61,6 +61,106 @@ public class Animal extends BaseObject {
     public Integer getId() {
         return id;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
+    public List<MedicalExamination> getMedicalExaminations() {
+        return medicalExaminations;
+    }
+
+    public void setMedicalExaminations(List<MedicalExamination> medicalExaminations) {
+        this.medicalExaminations = medicalExaminations;
+    }
+
+    public List<Exchange> getExchangeList() {
+        return exchangeList;
+    }
+
+    public void setExchangeList(List<Exchange> exchangeList) {
+        this.exchangeList = exchangeList;
+    }
+
+    public List<Access> getAccessList() {
+        return accessList;
+    }
+
+    public void setAccessList(List<Access> accessList) {
+        this.accessList = accessList;
+    }
+
+    public Instant getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Instant dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isPhysicalState() {
+        return physicalState;
+    }
+
+    public void setPhysicalState(boolean physicalState) {
+        this.physicalState = physicalState;
+    }
+
+    public boolean isHospital() {
+        return hospital;
+    }
+
+    public void setHospital(boolean hospital) {
+        this.hospital = hospital;
+    }
+
+    public Instant getReceiptDate() {
+        return receiptDate;
+    }
+
+    public void setReceiptDate(Instant receiptDate) {
+        this.receiptDate = receiptDate;
+    }
+
+    public int getNumberOfOffspring() {
+        return numberOfOffspring;
+    }
+
+    public void setNumberOfOffspring(int numberOfOffspring) {
+        this.numberOfOffspring = numberOfOffspring;
+    }
+
+    public int getCage() {
+        return cage;
+    }
+
+    public void setCage(int cage) {
+        this.cage = cage;
+    }
 }
 
 

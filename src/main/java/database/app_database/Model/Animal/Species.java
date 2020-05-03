@@ -27,5 +27,52 @@ public class Species {
     @Column(name = "age_for_childbirth", nullable = false)
     private  boolean ageForChildbirth;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Species> getSpeciesList() {
+        return speciesList;
+    }
+
+    public void setSpeciesList(List<Species> speciesList) {
+        this.speciesList = speciesList;
+    }
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isNeedWarmPlace() {
+        return needWarmPlace;
+    }
+
+    public void setNeedWarmPlace(boolean needWarmPlace) {
+        this.needWarmPlace = needWarmPlace;
+    }
+
+    public boolean isAgeForChildbirth() {
+        return ageForChildbirth;
+    }
+
+    public void setAgeForChildbirth(boolean ageForChildbirth) {
+        this.ageForChildbirth = ageForChildbirth;
+    }
 }
 

@@ -1,4 +1,6 @@
 package database.app_database.Controller;
+
+import database.app_database.Dto.AnimalDto;
 import database.app_database.Dto.EmployeeDto;
 import database.app_database.Service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ public class AnimalController {
     AnimalService animalService;
 
     @RequestMapping(method = GET, value = "animals")
-    public List<EmployeeDto> getAll(){
+    public List<AnimalDto> getAll() {
         return animalService.getAll();
     }
 
