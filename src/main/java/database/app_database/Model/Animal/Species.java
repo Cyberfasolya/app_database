@@ -22,10 +22,10 @@ public class Species {
     private String type;
 
     @Column(name = "need_warm_place", nullable = false)
-    private boolean need_warm_place;
+    private boolean needWarmPlace;
 
     @Column(name = "age_for_childbirth", nullable = false)
-    private  boolean age_for_childbirth;
+    private  boolean ageForChildbirth;
 
 }
 

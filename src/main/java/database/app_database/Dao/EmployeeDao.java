@@ -1,7 +1,9 @@
 package database.app_database.Dao;
+
 import database.app_database.Model.Employee.Employee;
 import database.app_database.Model.Employee.QEmployee;
 import org.springframework.stereotype.Repository;
+
 import static database.app_database.Model.Employee.QEmployee.employee;
 import static database.app_database.Model.Employee.AccessWorker.QVet.vet;
 import static database.app_database.Model.Employee.AccessWorker.QCleaner.cleaner;
@@ -23,32 +25,33 @@ public class EmployeeDao extends BaseEntityDao<Employee, QEmployee> {
                 .fetch();
     }
 
-   public List<Employee> getAllVet(){
-       return from(vet)
+    public List<Employee> getAllVet() {
+        return from(vet)
 //                .join(accessWorker).on(accessWorker.id.eq(vet.access_worker.id))
 //               .join(employee).on(accessWorker.employee.id.eq())
-               .select(vet.accessWorker.employee)
-               .fetch();
-   }
-    public List<Employee> getAllCleaner(){
+                .select(vet.accessWorker.employee)
+                .fetch();
+    }
+
+    public List<Employee> getAllCleaner() {
         return from(cleaner)
                 .select(cleaner.accessWorker.employee)
                 .fetch();
     }
 
-    public List<Employee> getAllTrainer(){
+    public List<Employee> getAllTrainer() {
         return from(trainer)
                 .select(trainer.accessWorker.employee)
                 .fetch();
     }
 
-    public List<Employee> getAllAdministrator(){
+    public List<Employee> getAllAdministrator() {
         return from(administrator)
                 .select(administrator.employee)
                 .fetch();
     }
 
-    public List<Employee> getAllBuilderWorker(){
+    public List<Employee> getAllBuilderWorker() {
         return from(builderWorker)
                 .select(builderWorker.employee)
                 .fetch();

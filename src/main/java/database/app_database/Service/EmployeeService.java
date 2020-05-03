@@ -1,19 +1,17 @@
 package database.app_database.Service;
 
-import database.app_database.Converter.Converter;
+import database.app_database.Converter.EmployeeConverter;
 import database.app_database.Dao.EmployeeDao;
 import database.app_database.Dao.Roles;
 import database.app_database.Dto.EmployeeDto;
 import database.app_database.Model.Employee.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -21,7 +19,7 @@ public class EmployeeService {
     EmployeeDao employeeDao;
 
     @Autowired
-    Converter converter;
+    EmployeeConverter employeeConverter;
 
     @Transactional
     public List<EmployeeDto> getAll() {
@@ -32,7 +30,7 @@ public class EmployeeService {
         rolesMap.put(Roles.administrator, employeeDao.getAllAdministrator());
         rolesMap.put(Roles.builderWorker, employeeDao.getAllBuilderWorker());
 
-        return converter.convertAllEmployees(rolesMap);
+        return employeeConverter.convertAllEmployees(rolesMap);
     }
 }
 

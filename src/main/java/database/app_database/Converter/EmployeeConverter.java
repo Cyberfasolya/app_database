@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class Converter {
+public class EmployeeConverter {
     public List<EmployeeDto> convertAllEmployees(Map<Roles, List<Employee>> rolesMap) {
         return rolesMap.entrySet()
                 .stream()

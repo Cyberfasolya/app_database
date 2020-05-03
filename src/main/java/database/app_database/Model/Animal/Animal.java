@@ -16,9 +16,9 @@ public class Animal extends BaseObject {
     @Id
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cage_id")
-    private Cage cage;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "cage_id")
+//    private Cage cage;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "species_id")
@@ -34,7 +34,7 @@ public class Animal extends BaseObject {
     private List<Access> accessList = new ArrayList<>();
 
     @Column(name = " date_of_birth", nullable = false)
-    private Instant date_of_birth;
+    private Instant dateOfBirth;
 
     @Column(name = "gender", nullable = false)
     private String gender;
@@ -43,16 +43,19 @@ public class Animal extends BaseObject {
     private String name;
 
     @Column(name = "physical_state", nullable =  false)
-    private boolean physical_state;
+    private boolean physicalState;
 
     @Column(name = "hospital")
     private boolean hospital;
 
     @Column(name = "reciept_date", nullable =  false)
-    private Instant reciept_date;
+    private Instant receiptDate;
 
     @Column(name = "number_of_offspring")
-    private int number_of_offspring;
+    private int numberOfOffspring;
+
+    @Column(name = "cage_id")
+    private int cage;
 
     @Override
     public Integer getId() {
