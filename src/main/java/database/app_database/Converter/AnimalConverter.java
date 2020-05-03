@@ -25,8 +25,9 @@ public class AnimalConverter {
     public SpeciesDto convertSpecies(Species species) {
         SpeciesDto dto = new SpeciesDto();
         dto.setId(species.getId());
+        dto.setName(species.getName());
         dto.setType(species.getType());
-        dto.setAgeForChildbirth(species.isAgeForChildbirth());
+        dto.setAgeForChildbirth(species.getAgeForChildbirth());
         dto.setNeedWarmPlace(species.isNeedWarmPlace());
         return dto;
     }

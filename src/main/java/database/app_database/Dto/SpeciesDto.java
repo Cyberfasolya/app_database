@@ -2,9 +2,18 @@ package database.app_database.Dto;
 
 public class SpeciesDto {
     private int id;
+    private String  name;
     private String type;
     private boolean needWarmPlace;
-    private  boolean ageForChildbirth;
+    private  int ageForChildbirth;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -30,11 +39,11 @@ public class SpeciesDto {
         this.needWarmPlace = needWarmPlace;
     }
 
-    public boolean isAgeForChildbirth() {
+    public int getAgeForChildbirth() {
         return ageForChildbirth;
     }
 
-    public void setAgeForChildbirth(boolean ageForChildbirth) {
+    public void setAgeForChildbirth(int ageForChildbirth) {
         this.ageForChildbirth = ageForChildbirth;
     }
 }

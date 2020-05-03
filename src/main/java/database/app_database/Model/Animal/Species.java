@@ -18,6 +18,9 @@ public class Species {
     @OneToMany(mappedBy = "species", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Menu> menuList = new ArrayList<>();
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @Column(name = "type", nullable = false)
     private String type;
 
@@ -25,7 +28,15 @@ public class Species {
     private boolean needWarmPlace;
 
     @Column(name = "age_for_childbirth", nullable = false)
-    private  boolean ageForChildbirth;
+    private  int ageForChildbirth;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
@@ -67,11 +78,11 @@ public class Species {
         this.needWarmPlace = needWarmPlace;
     }
 
-    public boolean isAgeForChildbirth() {
+    public int getAgeForChildbirth() {
         return ageForChildbirth;
     }
 
-    public void setAgeForChildbirth(boolean ageForChildbirth) {
+    public void setAgeForChildbirth(int ageForChildbirth) {
         this.ageForChildbirth = ageForChildbirth;
     }
 }
