@@ -31,7 +31,7 @@ public class EmployeeConverter {
         dto.setMonthlySalary(employee.getMonthlySalary());
         dto.setName(employee.getName());
         dto.setSurname(employee.getSurname());
-        dto.setWorkStartDate(dto.getWorkStartDate());
+        dto.setWorkStartDate(employee.getWorkStartDate());
         dto.setRole(role.toString());
 
         return dto;
