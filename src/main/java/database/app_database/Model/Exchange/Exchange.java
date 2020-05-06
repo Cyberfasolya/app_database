@@ -19,4 +19,28 @@ public class Exchange implements Serializable {
 
     @Column(name = "side")
     private boolean side;
+
+    public Zoo getZoo() {
+        return zoo;
+    }
+
+    public void setZoo(Zoo zoo) {
+        this.zoo = zoo;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
+
+    public boolean isSide() {
+        return side;
+    }
+
+    public void setSide(boolean side) {
+        this.side = side;
+    }
 }

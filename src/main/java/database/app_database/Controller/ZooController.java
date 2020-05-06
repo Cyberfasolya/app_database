@@ -1,8 +1,6 @@
 package database.app_database.Controller;
 
-import database.app_database.Dto.EmployeeDto;
 import database.app_database.Dto.ZooDto;
-import database.app_database.Service.EmployeeService;
 import database.app_database.Service.ZooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

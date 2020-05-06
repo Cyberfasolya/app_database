@@ -1,11 +1,8 @@
 package database.app_database.Service;
 
-import database.app_database.Converter.AnimalConverter;
 import database.app_database.Converter.ZooConverter;
 import database.app_database.Dao.ZooDao;
-import database.app_database.Dto.AnimalDto;
 import database.app_database.Dto.ZooDto;
-import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Exchange.Zoo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
