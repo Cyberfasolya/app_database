@@ -16,10 +16,10 @@ import java.util.List;
 @Service
 public class EmployeeService {
     @Autowired
-    EmployeeDao employeeDao;
+    private EmployeeDao employeeDao;
 
     @Autowired
-    EmployeeConverter employeeConverter;
+    private EmployeeConverter employeeConverter;
 
     @Transactional
     public List<EmployeeDto> getAll() {

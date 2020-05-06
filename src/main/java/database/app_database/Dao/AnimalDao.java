@@ -3,6 +3,7 @@ package database.app_database.Dao;
 import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Animal.QAnimal;
 import org.springframework.stereotype.Repository;
+
 import static database.app_database.Model.Animal.QAnimal.animal;
 
 import java.util.List;
@@ -19,5 +20,4 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
                 .select(animal)
                 .fetch();
     }
-
 }

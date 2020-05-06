@@ -1,9 +1,12 @@
 package database.app_database.Service;
 
 import database.app_database.Converter.AnimalConverter;
-import database.app_database.Dao.AnimalDao;
+import database.app_database.Converter.ZooConverter;
+import database.app_database.Dao.ZooDao;
 import database.app_database.Dto.AnimalDto;
+import database.app_database.Dto.ZooDto;
 import database.app_database.Model.Animal.Animal;
+import database.app_database.Model.Exchange.Zoo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class  AnimalService {
+public class ZooService {
     @Autowired
-    private AnimalDao animalDao;
+    private ZooDao zooDao;
 
     @Autowired
-    private AnimalConverter animalConverter;
+    private ZooConverter zooConverter;
 
     @Transactional
-    public List<AnimalDto> getAll() {
-        List<Animal> recipes = animalDao.getAll();
+    public List<ZooDto> getAll() {
+        List<Zoo> recipes = zooDao.getAll();
         return recipes
                 .stream()
-                .map(animalConverter::convertBase)
+                .map(zooConverter::convert)
                 .collect(Collectors.toList());
     }
 }
