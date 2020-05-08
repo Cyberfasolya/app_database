@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 public class EmployeeController {
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     @RequestMapping(method = GET, value = "employees")
     public List<EmployeeDto> getAll(){

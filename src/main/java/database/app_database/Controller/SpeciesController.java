@@ -1,5 +1,6 @@
 package database.app_database.Controller;
 
+import database.app_database.Dto.SpeciesBaseDto;
 import database.app_database.Dto.SpeciesDto;
 import database.app_database.Service.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class SpeciesController {
     private SpeciesService speciesService;
 
     @RequestMapping(method = GET, value = "species")
-    public List<SpeciesDto> getAll() {
+    public List<SpeciesBaseDto> getAll() {
         return speciesService.getAll();
     }
 

@@ -1,12 +1,9 @@
 package database.app_database.Service;
 
-import database.app_database.Converter.AnimalConverter;
 import database.app_database.Converter.SpeciesConverter;
-import database.app_database.Dao.AnimalDao;
 import database.app_database.Dao.SpeciesDao;
-import database.app_database.Dto.AnimalDto;
+import database.app_database.Dto.SpeciesBaseDto;
 import database.app_database.Dto.SpeciesDto;
-import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Animal.Species;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +21,12 @@ public class SpeciesService {
     private SpeciesConverter speciesConverter;
 
     @Transactional
-    public List<SpeciesDto> getAll() {
+    public List<SpeciesBaseDto> getAll() {
         List<Species> species = speciesDao.getAll();
         return species
                 .stream()
-                .map(speciesConverter::convertSpecies)
+                .map(speciesConverter::convertBase)
                 .collect(Collectors.toList());
     }
+
 }
