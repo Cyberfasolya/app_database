@@ -21,8 +21,8 @@ public class ZooService {
 
     @Transactional
     public List<ZooDto> getAll() {
-        List<Zoo> recipes = zooDao.getAll();
-        return recipes
+        List<Zoo> zoos = zooDao.getAll();
+        return zoos
                 .stream()
                 .map(zooConverter::convert)
                 .collect(Collectors.toList());

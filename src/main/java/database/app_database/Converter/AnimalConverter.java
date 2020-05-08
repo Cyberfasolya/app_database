@@ -1,13 +1,14 @@
 package database.app_database.Converter;
 
 import database.app_database.Dto.AnimalDto;
-import database.app_database.Dto.SpeciesDto;
 import database.app_database.Model.Animal.Animal;
-import database.app_database.Model.Animal.Species;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AnimalConverter {
+    @Autowired
+    private SpeciesConverter speciesConverter;
 
     public AnimalDto convertBase(Animal animal) {
         AnimalDto dto = new AnimalDto();
@@ -18,17 +19,8 @@ public class AnimalConverter {
         dto.setName(animal.getName());
         dto.setReceiptDate(animal.getReceiptDate());
         dto.setNumberOfOffspring(animal.getNumberOfOffspring());
-        dto.setSpecies(convertSpecies(animal.getSpecies()));
+        dto.setSpecies(speciesConverter.convertSpecies(animal.getSpecies()));
         return dto;
     }
 
-    public SpeciesDto convertSpecies(Species species) {
-        SpeciesDto dto = new SpeciesDto();
-        dto.setId(species.getId());
-        dto.setName(species.getName());
-        dto.setType(species.getType());
-        dto.setAgeForChildbirth(species.getAgeForChildbirth());
-        dto.setNeedWarmPlace(species.isNeedWarmPlace());
-        return dto;
-    }
 }

@@ -21,8 +21,8 @@ public class ExchangeService {
 
     @Transactional
     public List<ExchangeDto> getAll() {
-        List<Exchange> recipes = exchangeDao.getAll();
-        return recipes
+        List<Exchange> exchanges = exchangeDao.getAll();
+        return exchanges
                 .stream()
                 .map(exchangeConverter::convert)
                 .collect(Collectors.toList());
