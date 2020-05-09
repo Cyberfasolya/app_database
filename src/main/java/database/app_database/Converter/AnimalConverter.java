@@ -14,13 +14,12 @@ public class AnimalConverter {
         AnimalDto dto = new AnimalDto();
         dto.setId(animal.getId());
         dto.setCage(animal.getCage());
-        dto.setDateOfBirth(animal.getDateOfBirth());
+        dto.setDateOfBirth(animal.getDateOfBirth().toString());
         dto.setGender(animal.getGender());
         dto.setName(animal.getName());
-        dto.setReceiptDate(animal.getReceiptDate());
+        dto.setReceiptDate(animal.getReceiptDate().toString());
         dto.setNumberOfOffspring(animal.getNumberOfOffspring());
         dto.setSpecies(speciesConverter.convertSpecies(animal.getSpecies()));
         return dto;
     }
-
 }

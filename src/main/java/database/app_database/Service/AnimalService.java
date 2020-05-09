@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,8 +38,8 @@ public class AnimalService {
         Animal animal = animalDao.persist(new Animal());
         animal.setName(animalDto.getName());
         animal.setCage(animalDto.getCage());
-        animal.setDateOfBirth(animalDto.getDateOfBirth());
-        animal.setReceiptDate(animalDto.getReceiptDate());
+        animal.setDateOfBirth(Instant.parse(animalDto.getDateOfBirth()));
+        animal.setReceiptDate(Instant.parse(animalDto.getReceiptDate()));
         animal.setGender(animalDto.getGender());
         animal.setNumberOfOffspring(animal.getNumberOfOffspring());
         animal.setSpecies(speciesDao.get(animalDto.getSpecies().getId()));

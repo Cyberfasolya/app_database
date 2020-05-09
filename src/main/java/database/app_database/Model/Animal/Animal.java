@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name = "animal")
 public class Animal extends BaseObject {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
