@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,14 +37,21 @@ public class AnimalService {
 
     @Transactional
     public void create(AnimalDto animalDto){
-        Animal animal = animalDao.persist(new Animal());
+        Animal animal = new Animal();
+
+        LocalDate dateOfBirth = LocalDate.parse(animalDto.getDateOfBirth());
+        LocalDate receiptDate = LocalDate.parse(animalDto.getReceiptDate());
+
         animal.setName(animalDto.getName());
         animal.setCage(animalDto.getCage());
-        animal.setDateOfBirth(Instant.parse(animalDto.getDateOfBirth()));
-        animal.setReceiptDate(Instant.parse(animalDto.getReceiptDate()));
+        animal.setDateOfBirth(dateOfBirth.atStartOfDay(ZoneId.of("Europe/Paris")).toInstant());
+        animal.setReceiptDate(receiptDate.atStartOfDay(ZoneId.of("Europe/Paris")).toInstant());
         animal.setGender(animalDto.getGender());
-        animal.setNumberOfOffspring(animal.getNumberOfOffspring());
+        animal.setNumberOfOffspring(animalDto.getNumberOfOffspring());
         animal.setSpecies(speciesDao.get(animalDto.getSpecies().getId()));
+        animalDao.persist(animal);
     }
+
+
 
 }

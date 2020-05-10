@@ -12,9 +12,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "animal")
+@SequenceGenerator(name="seq", initialValue=101, allocationSize=1)
 public class Animal extends BaseObject {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     @Column(name = "id", nullable = false)
     private Integer id;
 
