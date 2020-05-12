@@ -12,6 +12,9 @@ import javax.transaction.Transactional;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,8 +30,10 @@ public class AnimalService {
     private SpeciesDao speciesDao;
 
     @Transactional
-    public List<AnimalDto> getAll() {
-        List<Animal> animals = animalDao.getAll();
+    public List<AnimalDto> getAll(Integer speciesId, String gender, Integer lowAge, Integer highAge) {
+        Instant highDate = lowAge == null ? null : ZonedDateTime.now().minusYears(lowAge).toInstant();
+        Instant lowDate = highAge == null ? null : ZonedDateTime.now().minusYears(highAge).toInstant();
+        List<Animal> animals = animalDao.getAll(speciesId, gender, lowDate, highDate);
         return animals
                 .stream()
                 .map(animalConverter::convertBase)
@@ -36,7 +41,7 @@ public class AnimalService {
     }
 
     @Transactional
-    public void create(AnimalDto animalDto){
+    public void create(AnimalDto animalDto) {
         Animal animal = new Animal();
 
         LocalDate dateOfBirth = LocalDate.parse(animalDto.getDateOfBirth());
@@ -51,7 +56,6 @@ public class AnimalService {
         animal.setSpecies(speciesDao.get(animalDto.getSpecies().getId()));
         animalDao.persist(animal);
     }
-
 
 
 }

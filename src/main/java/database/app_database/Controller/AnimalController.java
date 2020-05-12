@@ -3,10 +3,7 @@ package database.app_database.Controller;
 import database.app_database.Dto.AnimalDto;
 import database.app_database.Service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -21,12 +18,15 @@ public class AnimalController {
     private AnimalService animalService;
 
     @RequestMapping(method = GET, value = "animals")
-    public List<AnimalDto> getAll() {
-        return animalService.getAll();
+    public List<AnimalDto> getAll(@RequestParam(required = false) Integer speciesId,
+                                  @RequestParam(required = false) String gender,
+                                  @RequestParam(required = false) Integer lowAge,
+                                  @RequestParam(required = false) Integer highAge) {
+        return animalService.getAll(speciesId, gender, lowAge, highAge);
     }
 
     @RequestMapping(method = POST, value = "animal")
-    public void create(@RequestBody final AnimalDto animalDto){
+    public void create(@RequestBody final AnimalDto animalDto) {
         animalService.create(animalDto);
     }
 }
