@@ -29,4 +29,20 @@ public class SpeciesService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void create(SpeciesDto speciesDto) {
+        Species species = new Species();
+
+        species.setName(speciesDto.getName());
+        species.setType(speciesDto.getType());
+        species.setAgeForChildbirth(speciesDto.getAgeForChildbirth());
+        species.setNeedWarmPlace(speciesDto.isNeedWarmPlace());
+
+        species.setSpeciesList(speciesDto.getSpeciesList()
+                .stream()
+                .map(dto -> speciesDao.get(dto.getId()))
+                .collect(Collectors.toList()));
+
+        speciesDao.persist(species);
+    }
 }

@@ -1,11 +1,23 @@
 package database.app_database.Dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpeciesDto {
     private int id;
     private String  name;
     private String type;
     private boolean needWarmPlace;
     private  int ageForChildbirth;
+    private List<SpeciesBaseDto> speciesList = new ArrayList<>();
+
+    public List<SpeciesBaseDto> getSpeciesList() {
+        return speciesList;
+    }
+
+    public void setSpeciesList(List<SpeciesBaseDto> speciesList) {
+        this.speciesList = speciesList;
+    }
 
     public String getName() {
         return name;

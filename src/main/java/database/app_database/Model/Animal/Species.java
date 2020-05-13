@@ -7,8 +7,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "species")
+@SequenceGenerator(name="sequence", initialValue=11, allocationSize=1)
 public class Species {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequence")
+    @Column(name = "id", nullable = false)
     private int id;
 
     @ManyToMany(fetch = FetchType.LAZY)
