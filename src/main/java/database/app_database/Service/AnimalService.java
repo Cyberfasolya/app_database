@@ -5,6 +5,7 @@ import database.app_database.Dao.AnimalDao;
 import database.app_database.Dao.SpeciesDao;
 import database.app_database.Dto.AnimalDto;
 import database.app_database.Model.Animal.Animal;
+import database.app_database.Model.Animal.Species;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +58,14 @@ public class AnimalService {
         animalDao.persist(animal);
     }
 
+    @Transactional
+    public List<AnimalDto> getNeedWarmPlaceAndCompatibleAnimals(Integer speciesId, Boolean needWarmPlace) {
+        Species species = speciesId != null ? speciesDao.get(speciesId) : null;
+        List<Animal> animals = animalDao.getNeedWarmPlaceAndCompatibleAnimals(species, needWarmPlace);
+        return animals
+                .stream()
+                .map(animalConverter::convertBase)
+                .collect(Collectors.toList());
+    }
 
 }

@@ -25,6 +25,12 @@ public class AnimalController {
         return animalService.getAll(speciesId, gender, lowAge, highAge);
     }
 
+    @RequestMapping(method = GET, value = "animals/filter")
+    public List<AnimalDto> getNeedWarmPlaceAndCompatibleAnimals(@RequestParam(required = false) Integer speciesId,
+                                                                @RequestParam(required = false) Boolean needWarmPlace) {
+        return animalService.getNeedWarmPlaceAndCompatibleAnimals(speciesId, needWarmPlace);
+    }
+
     @RequestMapping(method = POST, value = "animal")
     public void create(@RequestBody final AnimalDto animalDto) {
         animalService.create(animalDto);

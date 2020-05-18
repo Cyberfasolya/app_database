@@ -1,18 +1,17 @@
 package database.app_database.Dao;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.dsl.Expressions;
 import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Animal.QAnimal;
-import javafx.beans.binding.BooleanExpression;
+import database.app_database.Model.Animal.Species;
 import org.springframework.stereotype.Repository;
 
 import static database.app_database.Model.Animal.QAnimal.animal;
+import static database.app_database.Model.Animal.QSpecies.species;
 
-import java.beans.Expression;
 import java.time.Instant;
 import java.util.List;
-import java.util.function.Predicate;
+
 
 @Repository
 public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
@@ -39,6 +38,22 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
             predicate.and(animal.dateOfBirth.before(highDate));
         }
 
+
+        return from(animal)
+                .where(predicate.getValue())
+                .select(animal)
+                .fetch();
+    }
+
+    public List<Animal> getNeedWarmPlaceAndCompatibleAnimals(Species chosenSpecies, Boolean needWarmPlace) {
+        var predicate = new BooleanBuilder();
+        if (chosenSpecies != null) {
+            predicate.and(animal.species.in(chosenSpecies.getSpeciesList()));
+        }
+
+        if (needWarmPlace != null) {
+            predicate.and(animal.species.needWarmPlace.eq(needWarmPlace));
+        }
 
         return from(animal)
                 .where(predicate.getValue())
