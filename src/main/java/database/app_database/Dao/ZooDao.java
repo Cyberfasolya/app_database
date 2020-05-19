@@ -21,4 +21,10 @@ public class ZooDao extends BaseEntityDao<Zoo, QZoo> {
                 .select(zoo)
                 .fetch();
     }
+    public Zoo get(int id){
+        return from(zoo)
+                .where(zoo.id.eq(id))
+                .select(zoo)
+                .fetchFirst();
+    }
 }

@@ -7,7 +7,6 @@ import database.app_database.Model.Animal.Species;
 import org.springframework.stereotype.Repository;
 
 import static database.app_database.Model.Animal.QAnimal.animal;
-import static database.app_database.Model.Animal.QSpecies.species;
 
 import java.time.Instant;
 import java.util.List;
@@ -43,6 +42,13 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
                 .where(predicate.getValue())
                 .select(animal)
                 .fetch();
+    }
+
+    public Animal getByNameAndSpecies(String name, Species species){
+        return from(animal)
+                .where(animal.name.eq(name).and(animal.species.eq(species)))
+                .select(animal)
+                .fetchFirst();
     }
 
     public List<Animal> getNeedWarmPlaceAndCompatibleAnimals(Species chosenSpecies, Boolean needWarmPlace) {
