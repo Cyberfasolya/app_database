@@ -27,4 +27,12 @@ public class ZooService {
                 .map(zooConverter::convert)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void create(ZooDto zooDto) {
+        Zoo zoo = new Zoo();
+
+        zoo.setName(zooDto.getName());
+        zooDao.persist(zoo);
+    }
 }
