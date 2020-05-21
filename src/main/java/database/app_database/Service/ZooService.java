@@ -2,6 +2,7 @@ package database.app_database.Service;
 
 import database.app_database.Converter.ZooConverter;
 import database.app_database.Dao.ZooDao;
+import database.app_database.Dto.SpeciesDto;
 import database.app_database.Dto.ZooDto;
 import database.app_database.Model.Exchange.Zoo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ZooService {
     private ZooConverter zooConverter;
 
     @Transactional
-    public List<ZooDto> getAll() {
-        List<Zoo> zoos = zooDao.getAll();
+    public List<ZooDto> getAll(Integer speciesId) {
+        List<Zoo> zoos = zooDao.getAll(speciesId);
         return zoos
                 .stream()
                 .map(zooConverter::convert)

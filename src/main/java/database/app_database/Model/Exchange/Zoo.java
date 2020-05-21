@@ -19,7 +19,7 @@ public class Zoo extends BaseObject {
     private String name;
 
     @OneToMany(mappedBy = "zoo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<Exchange> exchangeList = new ArrayList<>();
+    private List<Exchange> exchanges = new ArrayList<>();
 
     @Override
     public Integer getId() {
