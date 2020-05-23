@@ -18,14 +18,20 @@ public class AnimalController {
     private AnimalService animalService;
 
     @RequestMapping(method = GET, value = "animals")
-    public List<AnimalDto> getAll(@RequestParam(required = false) Integer speciesId,
-                                  @RequestParam(required = false) String gender,
-                                  @RequestParam(required = false) Integer lowAge,
-                                  @RequestParam(required = false) Integer highAge) {
-        return animalService.getAll(speciesId, gender, lowAge, highAge);
+    public List<AnimalDto> getAll() {
+        return animalService.getAll();
     }
 
-    @RequestMapping(method = GET, value = "animals/filter")
+    @RequestMapping(method = GET, value = "animals/filter-by-basic-info")
+    public List<AnimalDto> getByBasicInfo(@RequestParam(required = false) Integer speciesId,
+                                          @RequestParam(required = false) String gender,
+                                          @RequestParam(required = false) Integer lowAge,
+                                          @RequestParam(required = false) Integer highAge,
+                                          @RequestParam(required = false) Integer cage) {
+        return animalService.getByBasicInfo(speciesId, gender, lowAge, highAge, cage);
+    }
+
+    @RequestMapping(method = GET, value = "animals/filter-by-species-info")
     public List<AnimalDto> getNeedWarmPlaceAndCompatibleAnimals(@RequestParam(required = false) Integer speciesId,
                                                                 @RequestParam(required = false) Boolean needWarmPlace) {
         return animalService.getNeedWarmPlaceAndCompatibleAnimals(speciesId, needWarmPlace);

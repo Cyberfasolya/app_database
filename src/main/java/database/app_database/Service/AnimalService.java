@@ -31,10 +31,19 @@ public class AnimalService {
     private SpeciesDao speciesDao;
 
     @Transactional
-    public List<AnimalDto> getAll(Integer speciesId, String gender, Integer lowAge, Integer highAge) {
+    public List<AnimalDto> getAll() {
+        List<Animal> animals = animalDao.getAll();
+        return animals
+                .stream()
+                .map(animalConverter::convertBase)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<AnimalDto> getByBasicInfo(Integer speciesId, String gender, Integer lowAge, Integer highAge, Integer cage) {
         Instant highDate = lowAge == null ? null : ZonedDateTime.now().minusYears(lowAge).toInstant();
         Instant lowDate = highAge == null ? null : ZonedDateTime.now().minusYears(highAge).toInstant();
-        List<Animal> animals = animalDao.getAll(speciesId, gender, lowDate, highDate);
+        List<Animal> animals = animalDao.getByBasicInfo(speciesId, gender, lowDate, highDate, cage);
         return animals
                 .stream()
                 .map(animalConverter::convertBase)

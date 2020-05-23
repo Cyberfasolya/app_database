@@ -19,7 +19,7 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
         super(animal);
     }
 
-    public List<Animal> getAll(Integer speciesId, String gender, Instant lowDate, Instant highDate) {
+    public List<Animal> getByBasicInfo(Integer speciesId, String gender, Instant lowDate, Instant highDate, Integer cage) {
         var predicate = new BooleanBuilder();
         if (speciesId != null) {
             predicate.and(animal.species.id.eq(speciesId));
@@ -37,6 +37,9 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
             predicate.and(animal.dateOfBirth.before(highDate));
         }
 
+        if (cage != null) {
+            predicate.and(animal.cage.eq(cage));
+        }
 
         return from(animal)
                 .where(predicate.getValue())
@@ -44,7 +47,7 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
                 .fetch();
     }
 
-    public Animal getByNameAndSpecies(String name, Species species){
+    public Animal getByNameAndSpecies(String name, Species species) {
         return from(animal)
                 .where(animal.name.eq(name).and(animal.species.eq(species)))
                 .select(animal)
