@@ -5,6 +5,7 @@ import database.app_database.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -19,8 +20,10 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @RequestMapping(method = GET, value = "employees")
-    public List<EmployeeDto> getAll(){
-        return employeeService.getAll();
+    public List<EmployeeDto> getAll(@RequestParam(required = false) String role,
+                                    @RequestParam(required = false) String gender,
+                                    @RequestParam(required = false) Integer lowSalary,
+                                    @RequestParam(required = false) Integer highSalary) {
+        return employeeService.getAll(role, gender, lowSalary, highSalary);
     }
-
 }

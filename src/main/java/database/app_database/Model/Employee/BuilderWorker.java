@@ -3,13 +3,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "builder_worker")
-public class BuilderWorker {
+@PrimaryKeyJoinColumn(name = "employee_id")
+public class BuilderWorker extends Employee {
     @Id
     private int id;
-
-    @OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
 
     @Column(name = "building_for_repair")
     private int buildingForRepair;

@@ -22,4 +22,28 @@ public class Access implements Serializable {
 
     @Column(name = "access_start_date")
     private Instant accessStartDate;
+
+    public AccessWorker getAccessWorker() {
+        return accessWorker;
+    }
+
+    public void setAccessWorker(AccessWorker accessWorker) {
+        this.accessWorker = accessWorker;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
+
+    public Instant getAccessStartDate() {
+        return accessStartDate;
+    }
+
+    public void setAccessStartDate(Instant accessStartDate) {
+        this.accessStartDate = accessStartDate;
+    }
 }

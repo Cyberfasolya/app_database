@@ -1,5 +1,6 @@
 package database.app_database.Dao;
 
+import database.app_database.Model.Employee.BuilderWorker;
 import database.app_database.Model.Employee.Employee;
 import database.app_database.Model.Employee.QEmployee;
 import org.springframework.stereotype.Repository;
@@ -27,8 +28,6 @@ public class EmployeeDao extends BaseEntityDao<Employee, QEmployee> {
 
     public List<Employee> getAllVet() {
         return from(vet)
-//                .join(accessWorker).on(accessWorker.id.eq(vet.access_worker.id))
-//               .join(employee).on(accessWorker.employee.id.eq())
                 .select(vet.accessWorker.employee)
                 .fetch();
     }
@@ -51,9 +50,9 @@ public class EmployeeDao extends BaseEntityDao<Employee, QEmployee> {
                 .fetch();
     }
 
-    public List<Employee> getAllBuilderWorker() {
+    public List<BuilderWorker> getAllBuilderWorker() {
         return from(builderWorker)
-                .select(builderWorker.employee)
+                .select(builderWorker)
                 .fetch();
     }
 
