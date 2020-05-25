@@ -10,6 +10,15 @@ public class EmployeeDto {
     private Instant workStartDate;
     private int monthlySalary;
     private String role;
+    private int roleAttribute;
+
+    public int getRoleAttribute() {
+        return roleAttribute;
+    }
+
+    public void setRoleAttribute(int roleAttribute) {
+        this.roleAttribute = roleAttribute;
+    }
 
     public String getRole() {
         return role;

@@ -5,11 +5,22 @@ import javax.persistence.*;
 @Table(name = "builder_worker")
 @PrimaryKeyJoinColumn(name = "employee_id")
 public class BuilderWorker extends Employee {
-    @Id
-    private int id;
 
     @Column(name = "building_for_repair")
     private int buildingForRepair;
+
+    @Override
+    public <T> T accept(EmployeeVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public int getBuildingForRepair() {
+        return buildingForRepair;
+    }
+
+    public void setBuildingForRepair(int buildingForRepair) {
+        this.buildingForRepair = buildingForRepair;
+    }
 }
 
 

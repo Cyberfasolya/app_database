@@ -1,7 +1,6 @@
 package database.app_database.Model.Employee.AccessWorker;
 
 import database.app_database.Model.Animal.Animal;
-import database.app_database.Model.BaseObject;
 
 import javax.persistence.*;
 import java.io.Serializable;

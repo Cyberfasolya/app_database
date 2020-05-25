@@ -1,10 +1,16 @@
 package database.app_database.Model.Employee;
+
+import database.app_database.Model.Employee.AccessWorker.Cleaner;
+import database.app_database.Model.Employee.AccessWorker.Trainer;
+import database.app_database.Model.Employee.AccessWorker.Vet;
+
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Employee {
     @Id
     private int id;
 
@@ -22,6 +28,20 @@ public class Employee {
 
     @Column(name = "gender", nullable = false)
     private String gender;
+
+    public interface EmployeeVisitor<T> {
+        T visit(BuilderWorker builderWorker);
+
+        T visit(Administrator administrator);
+
+        T visit(Cleaner cleaner);
+
+        T visit(Trainer trainer);
+
+        T visit(Vet vet);
+    }
+
+    public abstract <T> T accept(EmployeeVisitor<T> visitor);
 
     public int getId() {
         return id;

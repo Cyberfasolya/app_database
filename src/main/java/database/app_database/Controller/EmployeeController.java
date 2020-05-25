@@ -24,6 +24,6 @@ public class EmployeeController {
                                     @RequestParam(required = false) String gender,
                                     @RequestParam(required = false) Integer lowSalary,
                                     @RequestParam(required = false) Integer highSalary) {
-        return employeeService.getAll(role, gender, lowSalary, highSalary);
+        return employeeService.getAll();
     }
 }

@@ -4,14 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "trainer")
-public class Trainer {
-    @Id
-    private int id;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "access_worker_id")
-    private AccessWorker accessWorker;
-
+@PrimaryKeyJoinColumn(name = "access_worker_id")
+public class Trainer extends AccessWorker {
     @Column(name = "hall_number")
     private int hallNumber;
-        }
+
+    @Override
+    public <T> T accept(EmployeeVisitor<T> visitor) {
+        return visitor.visit(this);
+    }
+
+    public int getHallNumber() {
+        return hallNumber;
+    }
+
+    public void setHallNumber(int hallNumber) {
+        this.hallNumber = hallNumber;
+    }
+}
