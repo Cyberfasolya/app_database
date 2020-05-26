@@ -1,5 +1,6 @@
 package database.app_database.Model.Employee;
 
+import database.app_database.Dao.Roles;
 import database.app_database.Model.Employee.AccessWorker.Cleaner;
 import database.app_database.Model.Employee.AccessWorker.Trainer;
 import database.app_database.Model.Employee.AccessWorker.Vet;
@@ -42,6 +43,8 @@ public abstract class Employee {
     }
 
     public abstract <T> T accept(EmployeeVisitor<T> visitor);
+
+    public abstract Roles getRole();
 
     public int getId() {
         return id;

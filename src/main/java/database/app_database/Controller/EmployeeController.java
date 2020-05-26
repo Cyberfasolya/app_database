@@ -23,7 +23,9 @@ public class EmployeeController {
     public List<EmployeeDto> getAll(@RequestParam(required = false) String role,
                                     @RequestParam(required = false) String gender,
                                     @RequestParam(required = false) Integer lowSalary,
-                                    @RequestParam(required = false) Integer highSalary) {
-        return employeeService.getAll();
+                                    @RequestParam(required = false) Integer highSalary,
+                                    @RequestParam(required = false) Integer durationOfWorkHigh,
+                                    @RequestParam(required = false) Integer durationOfWorkLow) {
+        return employeeService.getAll(role, gender, lowSalary, highSalary, durationOfWorkLow, durationOfWorkHigh);
     }
 }
