@@ -18,4 +18,36 @@ public class Provider {
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Feed> getFeedList() {
+        return feedList;
+    }
+
+    public void setFeedList(List<Feed> feedList) {
+        this.feedList = feedList;
+    }
+
+    public List<Supply> getSupplies() {
+        return supplies;
+    }
+
+    public void setSupplies(List<Supply> supplies) {
+        this.supplies = supplies;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

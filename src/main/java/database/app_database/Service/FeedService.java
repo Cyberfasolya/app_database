@@ -21,8 +21,8 @@ public class FeedService {
 
     @Transactional
     public List<FeedDto> getAll() {
-        List<Feed> exchanges = feedDao.getAll();
-        return exchanges
+        List<Feed> feeds = feedDao.getAll();
+        return feeds
                 .stream()
                 .map(feedConverter::convert)
                 .collect(Collectors.toList());
