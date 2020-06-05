@@ -19,10 +19,6 @@ public class Animal extends BaseObject {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "cage_id")
-//    private Cage cage;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "species_id")
     private Species species;

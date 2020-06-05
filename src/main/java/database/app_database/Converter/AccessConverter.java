@@ -13,9 +13,12 @@ public class AccessConverter {
     public AccessDto convert(Access access) {
         AccessDto accessDto = new AccessDto();
 
-        accessDto.setAccessStartDate(access.getAccessStartDate());
-        accessDto.setAnimal(animalConverter.convertBase(access.getAnimal()));
-        //employee
+        accessDto.setAccessStartDate(access.getAccessStartDate().toString());
+        accessDto.setEmployeeName(access.getAccessWorker().getName());
+        accessDto.setEmployeeSurame(access.getAccessWorker().getSurname());
+        accessDto.setAnimalName(access.getAnimal().getName());
+        accessDto.setSpecies(access.getAnimal().getSpecies().getName());
+
         return accessDto;
     }
 

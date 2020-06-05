@@ -5,31 +5,49 @@ import database.app_database.Model.Employee.AccessWorker.AccessWorker;
 import java.time.Instant;
 
 public class AccessDto {
-    private AccessWorker accessWorker;//employee
-    private AnimalDto animal;
-    private Instant accessStartDate;
+    private String employeeName;
+    private String employeeSurname;
+    private String animalName;
+    private String species;
+    private String accessStartDate;
 
-    public AccessWorker getAccessWorker() {
-        return accessWorker;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setAccessWorker(AccessWorker accessWorker) {
-        this.accessWorker = accessWorker;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public AnimalDto getAnimal() {
-        return animal;
+    public String getEmployeeSurname() {
+        return employeeSurname;
     }
 
-    public void setAnimal(AnimalDto animal) {
-        this.animal = animal;
+    public void setEmployeeSurame(String employeeSurame) {
+        this.employeeSurname = employeeSurame;
     }
 
-    public Instant getAccessStartDate() {
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public String getAccessStartDate() {
         return accessStartDate;
     }
 
-    public void setAccessStartDate(Instant accessStartDate) {
+    public void setAccessStartDate(String accessStartDate) {
         this.accessStartDate = accessStartDate;
     }
 }
