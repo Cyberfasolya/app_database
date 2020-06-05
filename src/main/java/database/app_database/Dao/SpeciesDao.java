@@ -27,4 +27,11 @@ public class SpeciesDao extends BaseEntityDao<Species, QSpecies> {
                 .select(species)
                 .fetchFirst();
     }
+
+    public Species getByName(String speciesName){
+        return from(species)
+                .where(species.name.eq(speciesName))
+                .select(species)
+                .fetchFirst();
+    }
 }
