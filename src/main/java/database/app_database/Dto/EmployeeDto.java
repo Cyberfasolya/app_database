@@ -7,7 +7,7 @@ public class EmployeeDto {
     private String name;
     private String surname;
     private String gender;
-    private Instant workStartDate;
+    private String workStartDate;
     private int monthlySalary;
     private String role;
     private int roleAttribute;
@@ -32,7 +32,7 @@ public class EmployeeDto {
         this.gender = gender;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,7 +44,7 @@ public class EmployeeDto {
         this.surname = surname;
     }
 
-    public void setWorkStartDate(Instant workStartDate) {
+    public void setWorkStartDate(String workStartDate) {
         this.workStartDate = workStartDate;
     }
 
@@ -52,7 +52,7 @@ public class EmployeeDto {
         this.monthlySalary = monthlySalary;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -68,7 +68,7 @@ public class EmployeeDto {
         return surname;
     }
 
-    public Instant getWorkStartDate() {
+    public String getWorkStartDate() {
         return workStartDate;
     }
 

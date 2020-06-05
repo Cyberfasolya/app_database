@@ -2,6 +2,7 @@ package database.app_database.Converter;
 
 import database.app_database.Dao.Roles;
 import database.app_database.Dto.EmployeeDto;
+import database.app_database.Model.Employee.AccessWorker.Access;
 import database.app_database.Model.Employee.AccessWorker.Cleaner;
 import database.app_database.Model.Employee.AccessWorker.Trainer;
 import database.app_database.Model.Employee.AccessWorker.Vet;
@@ -25,7 +26,7 @@ public class EmployeeConverter {
         dto.setMonthlySalary(employee.getMonthlySalary());
         dto.setName(employee.getName());
         dto.setSurname(employee.getSurname());
-        dto.setWorkStartDate(employee.getWorkStartDate());
+        dto.setWorkStartDate(employee.getWorkStartDate().toString());
 
         employee.accept(new Employee.EmployeeVisitor<Void>() {
             @Override
@@ -64,6 +65,13 @@ public class EmployeeConverter {
             }
         });
 
+        return dto;
+    }
+
+    public EmployeeDto convertAccessEmployee(Access access){
+        EmployeeDto dto = new EmployeeDto();
+        dto.setName(access.getAccessWorker().getName());
+        dto.setSurname(access.getAccessWorker().getSurname());
         return dto;
     }
 }

@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "builder_worker")
 @PrimaryKeyJoinColumn(name = "employee_id")
+@SequenceGenerator(name="bild_seq", initialValue=21, allocationSize=1)
 public class BuilderWorker extends Employee {
 
     private final static Roles role = Roles.builderWorker;

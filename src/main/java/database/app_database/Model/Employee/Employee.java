@@ -11,9 +11,12 @@ import java.time.Instant;
 @Entity
 @Table(name = "employee")
 @Inheritance(strategy = InheritanceType.JOINED)
+@SequenceGenerator(name="emp_seq", initialValue=101, allocationSize=1)
 public abstract class Employee {
     @Id
-    private int id;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="emp_seq")
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
     @Column(name = "name", nullable = false)
     private String name;
