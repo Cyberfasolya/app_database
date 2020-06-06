@@ -4,9 +4,12 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "supply")
+@SequenceGenerator(name = "seq_supply", initialValue = 101, allocationSize = 1)
 public class Supply {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_supply")
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "provider_id")

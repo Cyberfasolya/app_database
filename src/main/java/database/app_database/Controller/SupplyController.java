@@ -25,4 +25,9 @@ public class SupplyController {
         return supplyService.getAll();
     }
 
+    @RequestMapping(method = POST, value = "supply")
+    public void create(@RequestBody final SupplyDto supplyDto) {
+        supplyService.create(supplyDto);
+    }
+
 }
