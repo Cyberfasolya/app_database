@@ -27,4 +27,13 @@ public class FeedService {
                 .map(feedConverter::convert)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void create(FeedDto feedDto) {
+        Feed feed = new Feed();
+
+        feed.setName(feedDto.getName());
+        feed.setType(feedDto.getType());
+        feedDao.persist(feed);
+    }
 }

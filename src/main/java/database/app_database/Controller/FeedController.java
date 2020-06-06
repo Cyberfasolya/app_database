@@ -25,4 +25,8 @@ public class FeedController {
         return feedService.getAll();
     }
 
+    @RequestMapping(method = POST, value = "feed")
+    public void create(@RequestBody final FeedDto feedDto) {
+        feedService.create(feedDto);
+    }
 }

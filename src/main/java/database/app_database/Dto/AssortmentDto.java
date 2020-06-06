@@ -4,14 +4,14 @@ import java.util.List;
 
 public class AssortmentDto {
     private String providerName;
-    private List<String> Feeds;
+    private List<String> feeds;
 
     public List<String> getFeeds() {
-        return Feeds;
+        return feeds;
     }
 
     public void setFeeds(List<String> feeds) {
-        Feeds = feeds;
+        this.feeds = feeds;
     }
 
     public String getProviderName() {

@@ -20,4 +20,11 @@ public class FeedDao extends BaseEntityDao<Feed, QFeed> {
                 .select(feed)
                 .fetch();
     }
+
+    public Feed getByName(String name) {
+        return from(feed)
+                .where(feed.name.eq(name))
+                .select(feed)
+                .fetchFirst();
+    }
 }

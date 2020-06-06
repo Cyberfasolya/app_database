@@ -1,4 +1,5 @@
 package database.app_database.Model.Feed;
+
 import database.app_database.Model.BaseObject;
 
 import javax.persistence.*;
@@ -8,8 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "feed")
+@SequenceGenerator(name = "seq_feed", initialValue = 11, allocationSize = 1)
 public class Feed extends BaseObject {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_feed")
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -38,10 +42,6 @@ public class Feed extends BaseObject {
         return providers;
     }
 
-    public void setProviders(List<Provider> providers) {
-        this.providers = providers;
-    }
-
     public List<Supply> getSupplies() {
         return supplies;
     }
@@ -64,6 +64,12 @@ public class Feed extends BaseObject {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void addProvider(Provider provider) {
+        if (!providers.contains(provider)) {
+            //this.providers.add(provider);
+        }
     }
 }
 

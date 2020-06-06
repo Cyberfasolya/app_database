@@ -3,6 +3,7 @@ package database.app_database.Controller;
 import database.app_database.Dto.AssortmentDto;
 import database.app_database.Service.AssortmentService;
 import database.app_database.Service.ExchangeService;
+import database.app_database.Service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +22,16 @@ public class AssortmentController {
     @Autowired
     private AssortmentService assortmentService;
 
+    @Autowired
+    private ProviderService providerService;
+
     @RequestMapping(method = GET, value = "assortments")
     public List<AssortmentDto> getAll() {
         return assortmentService.getAll();
     }
 
+    @RequestMapping(method = POST, value = "assortment")
+    public void create(@RequestBody final AssortmentDto assortmentDto) {
+        providerService.addAssortment(assortmentDto);
+    }
 }

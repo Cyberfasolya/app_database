@@ -1,4 +1,5 @@
 package database.app_database.Model.Feed;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,11 @@ public class Provider {
         return feedList;
     }
 
-    public void setFeedList(List<Feed> feedList) {
-        this.feedList = feedList;
+    public void addFeed(Feed feed) {
+        if (!feedList.contains(feed)) {
+            this.feedList.add(feed);
+            feed.addProvider(this);
+        }
     }
 
     public List<Supply> getSupplies() {

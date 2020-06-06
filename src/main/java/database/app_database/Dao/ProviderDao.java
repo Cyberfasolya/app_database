@@ -20,4 +20,11 @@ public class ProviderDao extends BaseEntityDao<Provider, QProvider> {
                 .select(provider)
                 .fetch();
     }
+
+    public Provider getByName(String name) {
+        return from(provider)
+                .where(provider.name.eq(name))
+                .select(provider)
+                .fetchFirst();
+    }
 }

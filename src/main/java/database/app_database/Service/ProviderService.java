@@ -1,8 +1,11 @@
 package database.app_database.Service;
 
 import database.app_database.Converter.ProviderConverter;
+import database.app_database.Dao.FeedDao;
 import database.app_database.Dao.ProviderDao;
+import database.app_database.Dto.AssortmentDto;
 import database.app_database.Dto.ProviderDto;
+import database.app_database.Model.Feed.Feed;
 import database.app_database.Model.Feed.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,9 @@ public class ProviderService {
     private ProviderDao providerDao;
 
     @Autowired
+    private FeedDao feedDao;
+
+    @Autowired
     private ProviderConverter providerConverter;
 
     @Transactional
@@ -26,5 +32,12 @@ public class ProviderService {
                 .stream()
                 .map(providerConverter::convert)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void addAssortment(AssortmentDto assortmentDto) {
+        Provider provider = providerDao.getByName(assortmentDto.getProviderName());
+        Feed feed = feedDao.getByName(assortmentDto.getFeeds().get(0));
+        provider.addFeed(feed);
     }
 }

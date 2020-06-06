@@ -1,8 +1,6 @@
 package database.app_database.Service;
 
 import database.app_database.Converter.AssortmentConverter;
-import database.app_database.Converter.FeedConverter;
-import database.app_database.Dao.FeedDao;
 import database.app_database.Dao.ProviderDao;
 import database.app_database.Dto.AssortmentDto;
 import database.app_database.Model.Feed.Provider;
