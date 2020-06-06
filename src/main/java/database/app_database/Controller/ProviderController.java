@@ -25,4 +25,9 @@ public class ProviderController {
         return providerService.getAll();
     }
 
+    @RequestMapping(method = POST, value = "provider")
+    public void create(@RequestBody final ProviderDto providerDto) {
+        providerService.create(providerDto);
+    }
+
 }

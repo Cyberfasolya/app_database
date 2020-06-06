@@ -35,6 +35,14 @@ public class ProviderService {
     }
 
     @Transactional
+    public void create(ProviderDto providerDto) {
+        Provider provider = new Provider();
+
+        provider.setName(providerDto.getName());
+        providerDao.persist(provider);
+    }
+
+    @Transactional
     public void addAssortment(AssortmentDto assortmentDto) {
         Provider provider = providerDao.getByName(assortmentDto.getProviderName());
         Feed feed = feedDao.getByName(assortmentDto.getFeeds().get(0));

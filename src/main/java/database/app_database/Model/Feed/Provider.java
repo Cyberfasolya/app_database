@@ -6,9 +6,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "provider")
+@SequenceGenerator(name = "seq_provider", initialValue = 12, allocationSize = 1)
 public class Provider {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_provider")
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "assortment", joinColumns = @JoinColumn(name = "provider_id"), inverseJoinColumns = @JoinColumn(name = "feed_id"))

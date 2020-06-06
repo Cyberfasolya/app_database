@@ -2,7 +2,7 @@ package database.app_database.Dto;
 
 public class ProviderDto {
     private int id;
-    private String Name;
+    private String name;
 
     public int getId() {
         return id;
@@ -13,10 +13,10 @@ public class ProviderDto {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 }
