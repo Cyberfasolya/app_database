@@ -1,6 +1,7 @@
 package database.app_database.Controller;
 
 import database.app_database.Dto.FeedDto;
+import database.app_database.Dto.ProviderFeedDto;
 import database.app_database.Service.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,11 @@ public class FeedController {
     @RequestMapping(method = GET, value = "feeds")
     public List<FeedDto> getAll() {
         return feedService.getAll();
+    }
+
+    @RequestMapping(method = GET, value = "zoo-feed")
+    public ProviderFeedDto getZooFeeds() {
+        return feedService.getZooFeeds();
     }
 
     @RequestMapping(method = POST, value = "feed")

@@ -20,4 +20,11 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
                 .select(supply)
                 .fetch();
     }
+
+    public List<Supply> getZooSupplies() {
+        return from(supply)
+                .where(supply.provider.name.eq("Зоопарк"))
+                .select(supply)
+                .fetch();
+    }
 }

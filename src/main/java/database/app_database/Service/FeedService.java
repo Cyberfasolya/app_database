@@ -2,8 +2,11 @@ package database.app_database.Service;
 
 import database.app_database.Converter.FeedConverter;
 import database.app_database.Dao.FeedDao;
+import database.app_database.Dao.SupplyDao;
 import database.app_database.Dto.FeedDto;
+import database.app_database.Dto.ProviderFeedDto;
 import database.app_database.Model.Feed.Feed;
+import database.app_database.Model.Feed.Supply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,9 @@ import java.util.stream.Collectors;
 public class FeedService {
     @Autowired
     private FeedDao feedDao;
+
+    @Autowired
+    private SupplyDao supplyDao;
 
     @Autowired
     private FeedConverter feedConverter;
@@ -35,5 +41,11 @@ public class FeedService {
         feed.setName(feedDto.getName());
         feed.setType(feedDto.getType());
         feedDao.persist(feed);
+    }
+
+    @Transactional
+    public ProviderFeedDto getZooFeeds(){
+        List<Supply> supplies = supplyDao.getZooSupplies();
+        return feedConverter.convertZoosFeeds(supplies);
     }
 }
