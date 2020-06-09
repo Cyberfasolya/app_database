@@ -9,8 +9,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "menu")
+@SequenceGenerator(name = "seq_menu", initialValue = 12, allocationSize = 1)
 public class Menu extends BaseObject {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_menu")
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "season", nullable = false)

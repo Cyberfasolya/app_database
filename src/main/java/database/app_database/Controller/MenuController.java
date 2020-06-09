@@ -25,4 +25,9 @@ public class MenuController {
         return menuService.getAll();
     }
 
+    @RequestMapping(method = POST, value = "menu")
+    public void create(@RequestBody final MenuDto menuDto) {
+        menuService.create(menuDto);
+    }
+
 }
