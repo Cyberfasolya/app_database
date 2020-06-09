@@ -20,4 +20,27 @@ public class MenuContent implements Serializable {
     @Column(name = "feed_amount", nullable = false)
     private int feedAmount;
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Feed getFeed() {
+        return feed;
+    }
+
+    public void setFeed(Feed feed) {
+        this.feed = feed;
+    }
+
+    public int getFeedAmount() {
+        return feedAmount;
+    }
+
+    public void setFeedAmount(int feedAmount) {
+        this.feedAmount = feedAmount;
+    }
 }
