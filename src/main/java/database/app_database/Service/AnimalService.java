@@ -2,10 +2,12 @@ package database.app_database.Service;
 
 import database.app_database.Converter.AnimalConverter;
 import database.app_database.Dao.AnimalDao;
+import database.app_database.Dao.MenuDao;
 import database.app_database.Dao.SpeciesDao;
 import database.app_database.Dto.AnimalDto;
 import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Animal.Species;
+import database.app_database.Model.Feed.Menu.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,9 @@ public class AnimalService {
 
     @Autowired
     private SpeciesDao speciesDao;
+
+    @Autowired
+    private MenuDao menuDao;
 
     @Transactional
     public List<AnimalDto> getAll() {
@@ -71,6 +76,21 @@ public class AnimalService {
     public List<AnimalDto> getNeedWarmPlaceAndCompatibleAnimals(Integer speciesId, Boolean needWarmPlace) {
         Species species = speciesId != null ? speciesDao.get(speciesId) : null;
         List<Animal> animals = animalDao.getNeedWarmPlaceAndCompatibleAnimals(species, needWarmPlace);
+        return animals
+                .stream()
+                .map(animalConverter::convertBase)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<AnimalDto> getAnimalsByMenu(String feedType, String season) {
+        List<Menu> menus = menuDao.getByFeedTypeAndSeason(feedType, season);
+        List<Species> species = menus
+                .stream()
+                .map(Menu::getSpecies)
+                .distinct()
+                .collect(Collectors.toList());
+        List<Animal> animals = animalDao.getBySpecies(species);
         return animals
                 .stream()
                 .map(animalConverter::convertBase)

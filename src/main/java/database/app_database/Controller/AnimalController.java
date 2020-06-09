@@ -41,4 +41,10 @@ public class AnimalController {
     public void create(@RequestBody final AnimalDto animalDto) {
         animalService.create(animalDto);
     }
+
+    @RequestMapping(method = GET, value = "animals-by-menu")
+    public List<AnimalDto> getAnimalsByMenu(@RequestParam(required = false) String feedType,
+                                            @RequestParam(required = false) String season) {
+        return animalService.getAnimalsByMenu(feedType, season);
+    }
 }

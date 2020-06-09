@@ -4,6 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import database.app_database.Model.Animal.Animal;
 import database.app_database.Model.Animal.QAnimal;
 import database.app_database.Model.Animal.Species;
+import liquibase.pro.packaged.S;
 import org.springframework.stereotype.Repository;
 
 import static database.app_database.Model.Animal.QAnimal.animal;
@@ -66,6 +67,13 @@ public class AnimalDao extends BaseEntityDao<Animal, QAnimal> {
 
         return from(animal)
                 .where(predicate.getValue())
+                .select(animal)
+                .fetch();
+    }
+
+    public List<Animal> getBySpecies(List<Species> species) {
+        return from(animal)
+                .where(animal.species.in(species))
                 .select(animal)
                 .fetch();
     }
