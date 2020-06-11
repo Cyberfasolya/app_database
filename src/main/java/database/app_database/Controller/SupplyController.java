@@ -3,10 +3,7 @@ package database.app_database.Controller;
 import database.app_database.Dto.SupplyDto;
 import database.app_database.Service.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -30,4 +27,16 @@ public class SupplyController {
         supplyService.create(supplyDto);
     }
 
+    @RequestMapping(method = GET, value = "filter-supplies")
+    public List<SupplyDto> getByBasicInfo(
+            @RequestParam(required = false) String feedName,
+            @RequestParam(required = false) Integer lowAmount,
+            @RequestParam(required = false) Integer highAmount,
+            @RequestParam(required = false) Integer lowPeriod,
+            @RequestParam(required = false) Integer highPeriod,
+            @RequestParam(required = false) Integer lowPrice,
+            @RequestParam(required = false) Integer highPrice
+    ) {
+        return supplyService.getByBasicInfo(feedName, lowAmount, highAmount, lowPeriod, highPeriod, lowPrice, highPrice);
+    }
 }

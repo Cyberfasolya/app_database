@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,5 +59,18 @@ public class SupplyService {
         supply.setFeed(feed);
 
         supplyDao.persist(supply);
+    }
+
+    @Transactional
+    public List<SupplyDto> getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
+                                            Integer lowPeriod, Integer highPeriod, Integer lowPrice, Integer highPrice) {
+        Instant lowDate = lowPeriod == null ? null : ZonedDateTime.now().minusYears(lowPeriod).toInstant();
+        Instant highDate = highPeriod == null ? null : ZonedDateTime.now().minusYears(highPeriod).toInstant();
+
+        List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice, highPrice);
+        return supplies
+                .stream()
+                .map(supplyConverter::convert)
+                .collect(Collectors.toList());
     }
 }
