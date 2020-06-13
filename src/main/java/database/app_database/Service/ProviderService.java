@@ -63,7 +63,7 @@ public class ProviderService {
         Instant lowDate = lowPeriod == null ? null : ZonedDateTime.now().minusYears(lowPeriod).toInstant();
         Instant highDate = highPeriod == null ? null : ZonedDateTime.now().minusYears(highPeriod).toInstant();
 
-        List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice, highPrice);
+        List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice, highPrice, null, null);
         return supplies
                 .stream()
                 .map(Supply::getProvider)
