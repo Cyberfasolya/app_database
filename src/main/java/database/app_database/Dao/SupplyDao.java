@@ -37,7 +37,60 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
     public List<Supply> getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
                                        Instant highDate, Instant lowDate, Integer lowPrice, Integer highPrice,
                                        String feedNamePart, String providerNamePart,
-                                       String sortingAttribute, String sortingType) {
+                                       String sortingAttribute, String sortingType, Integer page) {
+        var predicate = new BooleanBuilder();
+        if (feedName != null) {
+            predicate.and(supply.feed.name.eq(feedName));
+        }
+
+        if (feedNamePart != null) {
+            predicate.and(supply.feed.name.contains(feedNamePart));
+        }
+
+        if (providerNamePart != null) {
+            predicate.and(supply.provider.name.contains(providerNamePart));
+        }
+
+        if (lowAmount != null) {
+            predicate.and(supply.feedAmount.goe(lowAmount));
+        }
+
+        if (highAmount != null) {
+            predicate.and(supply.feedAmount.loe(highAmount));
+        }
+
+        if (lowDate != null) {
+            predicate.and(supply.supplyDate.after(lowDate));
+        }
+
+        if (highDate != null) {
+            predicate.and(supply.supplyDate.before(highDate));
+        }
+
+        if (lowPrice != null) {
+            predicate.and(supply.price.goe(lowPrice));
+        }
+
+        if (highPrice != null) {
+            predicate.and(supply.price.loe(highPrice));
+        }
+
+        return from(supply)
+                .where(predicate.getValue())
+                .orderBy(getOrderSpecifier(sortingAttribute, sortingType))
+                .limit(10)
+                .offset((page - 1) * 10)
+                .select(supply, supply.provider, supply.feed)
+                .fetch()
+                .stream()
+                .map(tuple -> tuple.get(supply))
+                .collect(Collectors.toList());
+    }
+
+    public List<Supply> getSuppliesForQuery(String feedName, Integer lowAmount, Integer highAmount,
+                                            Instant highDate, Instant lowDate, Integer lowPrice, Integer highPrice,
+                                            String feedNamePart, String providerNamePart,
+                                            String sortingAttribute, String sortingType) {
         var predicate = new BooleanBuilder();
         if (feedName != null) {
             predicate.and(supply.feed.name.eq(feedName));
@@ -84,6 +137,7 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
                 .map(tuple -> tuple.get(supply))
                 .collect(Collectors.toList());
     }
+
 
     private OrderSpecifier getOrderSpecifier(String sortingAttribute, String sortingType) {
         if (sortingAttribute == null) {

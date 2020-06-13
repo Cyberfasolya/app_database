@@ -1,6 +1,7 @@
 package database.app_database.Controller;
 
 import database.app_database.Dto.SupplyDto;
+import database.app_database.Dto.SupplyListDataDto;
 import database.app_database.Service.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class SupplyController {
     }
 
     @RequestMapping(method = GET, value = "filter-supplies")
-    public List<SupplyDto> getByBasicInfo(
+    public SupplyListDataDto getByBasicInfo(
             @RequestParam(required = false) String feedName,
             @RequestParam(required = false) Integer lowAmount,
             @RequestParam(required = false) Integer highAmount,
@@ -39,9 +40,10 @@ public class SupplyController {
             @RequestParam(required = false) String feedNamePart,
             @RequestParam(required = false) String providerNamePart,
             @RequestParam(required = false) String sortingAttribute,
-            @RequestParam(required = false) String sortingType
+            @RequestParam(required = false) String sortingType,
+            @RequestParam(required = false) Integer page
     ) {
         return supplyService.getByBasicInfo(feedName, lowAmount, highAmount, lowPeriod, highPeriod, lowPrice, highPrice,
-                feedNamePart, providerNamePart, sortingAttribute, sortingType);
+                feedNamePart, providerNamePart, sortingAttribute, sortingType, page);
     }
 }

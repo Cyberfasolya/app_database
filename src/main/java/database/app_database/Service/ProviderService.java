@@ -64,7 +64,7 @@ public class ProviderService {
         Instant highDate = highPeriod == null ? null : ZonedDateTime.now().minusYears(highPeriod).toInstant();
 
         List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice,
-                highPrice, null, null, null, null);
+                highPrice, null, null, null, null, null);
         return supplies
                 .stream()
                 .map(Supply::getProvider)

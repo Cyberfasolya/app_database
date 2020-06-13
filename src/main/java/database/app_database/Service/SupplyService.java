@@ -5,6 +5,7 @@ import database.app_database.Dao.FeedDao;
 import database.app_database.Dao.ProviderDao;
 import database.app_database.Dao.SupplyDao;
 import database.app_database.Dto.SupplyDto;
+import database.app_database.Dto.SupplyListDataDto;
 import database.app_database.Model.Feed.Feed;
 import database.app_database.Model.Feed.Provider;
 import database.app_database.Model.Feed.Supply;
@@ -62,17 +63,25 @@ public class SupplyService {
     }
 
     @Transactional
-    public List<SupplyDto> getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
-                                          Integer lowPeriod, Integer highPeriod, Integer lowPrice, Integer highPrice, String feedNamePart, String providerNamePart,
-                                          String sortingAttribute, String sortingType) {
+    public SupplyListDataDto getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
+                                            Integer lowPeriod, Integer highPeriod, Integer lowPrice, Integer highPrice, String feedNamePart, String providerNamePart,
+                                            String sortingAttribute, String sortingType, Integer page) {
         Instant lowDate = lowPeriod == null ? null : ZonedDateTime.now().minusYears(lowPeriod).toInstant();
         Instant highDate = highPeriod == null ? null : ZonedDateTime.now().minusYears(highPeriod).toInstant();
 
         List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice,
-                highPrice, feedNamePart, providerNamePart, sortingAttribute, sortingType);
-        return supplies
+                highPrice, feedNamePart, providerNamePart, sortingAttribute, sortingType, page);
+        List<SupplyDto> supplyDtos = supplies
                 .stream()
                 .map(supplyConverter::convert)
                 .collect(Collectors.toList());
+
+        SupplyListDataDto dto = new SupplyListDataDto();
+        dto.setSupplies(supplyDtos);
+        supplies = supplyDao.getSuppliesForQuery(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice,
+                highPrice, feedNamePart, providerNamePart, sortingAttribute, sortingType);
+        dto.setNumberOfSupplies(supplies.size());
+
+        return dto;
     }
 }
