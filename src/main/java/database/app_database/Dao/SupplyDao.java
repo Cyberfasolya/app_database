@@ -1,6 +1,9 @@
 package database.app_database.Dao;
 
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.ComparableExpressionBase;
 import database.app_database.Model.Feed.QSupply;
 import database.app_database.Model.Feed.Supply;
 import org.springframework.stereotype.Repository;
@@ -9,6 +12,7 @@ import static database.app_database.Model.Feed.QSupply.supply;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
@@ -32,7 +36,8 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
 
     public List<Supply> getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
                                        Instant highDate, Instant lowDate, Integer lowPrice, Integer highPrice,
-                                       String feedNamePart, String providerNamePart) {
+                                       String feedNamePart, String providerNamePart,
+                                       String sortingAttribute, String sortingType) {
         var predicate = new BooleanBuilder();
         if (feedName != null) {
             predicate.and(supply.feed.name.eq(feedName));
@@ -72,7 +77,57 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
 
         return from(supply)
                 .where(predicate.getValue())
-                .select(supply)
-                .fetch();
+                .orderBy(getOrderSpecifier(sortingAttribute, sortingType))
+                .select(supply, supply.provider, supply.feed)
+                .fetch()
+                .stream()
+                .map(tuple -> tuple.get(supply))
+                .collect(Collectors.toList());
+    }
+
+    private OrderSpecifier getOrderSpecifier(String sortingAttribute, String sortingType) {
+        if (sortingAttribute == null) {
+            return supply.id.asc();
+        }
+
+        ComparableExpressionBase field = getComparableExpressionBase(sortingAttribute);
+
+        var asc = true;
+
+        if (sortingType.equals("desc")) {
+            asc = false;
+        }
+
+        return asc ? field.asc() : field.desc();
+    }
+
+    private ComparableExpressionBase getComparableExpressionBase(String sortingAttribute) {
+        ComparableExpressionBase field = null;
+
+        if (sortingAttribute.equals("providerName")) {
+            field = supply.provider.name;
+        }
+
+        if (sortingAttribute.equals("feedName")) {
+            field = supply.feed.name;
+        }
+
+        if (sortingAttribute.equals("price")) {
+            field = supply.price;
+        }
+
+        if (sortingAttribute.equals("supplyDate")) {
+            field = supply.supplyDate;
+        }
+
+        if (sortingAttribute.equals("feedAmount")) {
+            field = supply.feedAmount;
+        }
+
+        if (field == null) {
+            throw new IllegalArgumentException("Wrong sorting attribute");
+        }
+
+        return field;
     }
 }

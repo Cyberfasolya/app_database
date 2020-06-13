@@ -63,11 +63,13 @@ public class SupplyService {
 
     @Transactional
     public List<SupplyDto> getByBasicInfo(String feedName, Integer lowAmount, Integer highAmount,
-                                          Integer lowPeriod, Integer highPeriod, Integer lowPrice, Integer highPrice, String feedNamePart, String providerNamePart) {
+                                          Integer lowPeriod, Integer highPeriod, Integer lowPrice, Integer highPrice, String feedNamePart, String providerNamePart,
+                                          String sortingAttribute, String sortingType) {
         Instant lowDate = lowPeriod == null ? null : ZonedDateTime.now().minusYears(lowPeriod).toInstant();
         Instant highDate = highPeriod == null ? null : ZonedDateTime.now().minusYears(highPeriod).toInstant();
 
-        List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice, highPrice, feedNamePart, providerNamePart);
+        List<Supply> supplies = supplyDao.getByBasicInfo(feedName, lowAmount, highAmount, highDate, lowDate, lowPrice,
+                highPrice, feedNamePart, providerNamePart, sortingAttribute, sortingType);
         return supplies
                 .stream()
                 .map(supplyConverter::convert)

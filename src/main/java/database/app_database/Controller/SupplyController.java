@@ -37,8 +37,11 @@ public class SupplyController {
             @RequestParam(required = false) Integer lowPrice,
             @RequestParam(required = false) Integer highPrice,
             @RequestParam(required = false) String feedNamePart,
-            @RequestParam(required = false) String providerNamePart
+            @RequestParam(required = false) String providerNamePart,
+            @RequestParam(required = false) String sortingAttribute,
+            @RequestParam(required = false) String sortingType
     ) {
-        return supplyService.getByBasicInfo(feedName, lowAmount, highAmount, lowPeriod, highPeriod, lowPrice, highPrice, feedNamePart, providerNamePart);
+        return supplyService.getByBasicInfo(feedName, lowAmount, highAmount, lowPeriod, highPeriod, lowPrice, highPrice,
+                feedNamePart, providerNamePart, sortingAttribute, sortingType);
     }
 }
