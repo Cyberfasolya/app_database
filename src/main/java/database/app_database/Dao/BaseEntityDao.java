@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 public abstract class BaseEntityDao<T, Q extends EntityPathBase<T>> {
 
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
 
     protected Q qClass;
 

@@ -20,8 +20,9 @@ public class FeedConverter {
         return dto;
     }
 
-    public ProviderFeedDto convertZoosFeeds(List<Supply> supplies) {
+    public ProviderFeedDto convertZoosFeeds(List<Supply> supplies, Integer numberOfZooSupplies) {
         ProviderFeedDto dto = new ProviderFeedDto();
+        dto.setNumberOfZooSupplies(numberOfZooSupplies);
         var feeds = supplies
                 .stream()
                 .map(Supply::getFeed)

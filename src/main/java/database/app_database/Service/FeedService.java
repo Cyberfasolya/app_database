@@ -46,6 +46,7 @@ public class FeedService {
     @Transactional
     public ProviderFeedDto getZooFeeds(){
         List<Supply> supplies = supplyDao.getZooSupplies();
-        return feedConverter.convertZoosFeeds(supplies);
+        Integer numberOfZooSupplies = supplyDao.getNumberOfZooSupplies();
+        return feedConverter.convertZoosFeeds(supplies, numberOfZooSupplies);
     }
 }

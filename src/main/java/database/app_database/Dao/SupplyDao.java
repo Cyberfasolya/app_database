@@ -8,8 +8,12 @@ import database.app_database.Model.Feed.QSupply;
 import database.app_database.Model.Feed.Supply;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import static database.app_database.Model.Feed.QSupply.supply;
 
+import java.math.BigInteger;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +23,11 @@ public class SupplyDao extends BaseEntityDao<Supply, QSupply> {
 
     public SupplyDao() {
         super(supply);
+    }
+
+    public Integer getNumberOfZooSupplies(){
+        Query result = em.createNativeQuery("select get_number_of_zoo_supplies()");
+        return ((BigInteger) result.getSingleResult()).intValue();
     }
 
     public List<Supply> getAll() {
